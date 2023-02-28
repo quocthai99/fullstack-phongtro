@@ -1,11 +1,11 @@
-import authRouter from "./auth"
+import authRouter from "./auth";
 
-const initRoute = (app) => {
-    app.use("/api/v1/auth", authRouter )
+const initRoutes = (app) => {
+  app.use("/api/v1/auth", authRouter);
 
-    return app.use("/", (req, res) => {
-        res.send("server onnnn")
-    })
-}
+  return app.use("/", (req, res) => {
+    res.send("server on...");
+  });
+};
 
-export default initRoute;
+export default initRoutes;
