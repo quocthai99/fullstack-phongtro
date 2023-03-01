@@ -4,7 +4,6 @@ import cors from "cors";
 import initRoute from "./src/routes";
 import connectDatabase from "./src/config/connectDatabase";
 
-
 const app = express()
 
 app.use(cors({
