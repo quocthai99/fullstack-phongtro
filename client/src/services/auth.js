@@ -1,7 +1,6 @@
 import axiosConfig from '../axiosConfig';
 
-export const apiRegister = (payload) =>
-    new Promise(async (resolve, reject) => {
+export const apiRegister = (payload) => new Promise(async (resolve, reject) => {
         try {
             const response = await axiosConfig({
                 method: 'post',
@@ -13,8 +12,7 @@ export const apiRegister = (payload) =>
             reject(error);
         }
     });
-export const apiLogin = (payload) =>
-    new Promise(async (resolve, reject) => {
+export const apiLogin = (payload) => new Promise(async (resolve, reject) => {
         try {
             const response = await axiosConfig({
                 method: 'post',

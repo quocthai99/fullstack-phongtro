@@ -8,8 +8,8 @@ import nhachothue from "../../data/nhachothue.json"
 import generateCode from "../ultils/generateCode"
 require('dotenv').config()
 
-const dataBody = nhachothue.body
-const dataHeader = nhachothue.header
+const dataBody = chothuecanho.body
+const dataHeader = chothuecanho.header
 
 const hashPassword = password => bcrypt.hashSync(password, bcrypt.genSaltSync(12))
 
@@ -29,7 +29,7 @@ export const insert = () => new Promise(async (resolve, reject) => {
                 labelCode,
                 address: item?.header?.address,
                 attributesId,
-                categoryCode: 'NCT',
+                categoryCode: 'CTCH',
                 description: JSON.stringify(item?.mainContent?.content),
                 userId,
                 overviewId,
@@ -68,8 +68,8 @@ export const insert = () => new Promise(async (resolve, reject) => {
                 zalo: item?.contact?.content.find(i => i.name === "Zalo")?.content,
             })
             await db.Category.create({
-                code: "NCT",
-                value: "nhà cho thuê",
+                code: "CTCH",
+                value: "cho thuê căn hộ",
                 header: dataHeader?.title,
                 subheader: dataHeader?.description
             })
