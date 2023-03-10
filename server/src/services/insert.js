@@ -17,7 +17,7 @@ export const insert = () => new Promise(async (resolve, reject) => {
     try {
         dataBody.forEach(async(item) => {
             let postId = v4()
-            let labelCode = generateCode(4)
+            let labelCode = generateCode(item?.header?.class?.classType)
             let attributesId = v4()
             let userId = v4()
             let overviewId = v4()
@@ -46,9 +46,12 @@ export const insert = () => new Promise(async (resolve, reject) => {
                 id: imagesId,
                 image: JSON.stringify(item?.images)
             })
-            await db.Label.create({
-                code: labelCode,
-                value: item?.header?.class?.classType
+            await db.Label.findOrCreate({
+                where: {code: labelCode},
+                defaults: {
+                    code: labelCode,
+                    value: item?.header?.class?.classType
+                }
             })
             await db.Overview.create({
                 id: overviewId,
@@ -67,12 +70,12 @@ export const insert = () => new Promise(async (resolve, reject) => {
                 phone: item?.contact?.content.find(i => i.name === "Điện thoại:")?.content,
                 zalo: item?.contact?.content.find(i => i.name === "Zalo")?.content,
             })
-            await db.Category.create({
-                code: "CTCH",
-                value: "cho thuê căn hộ",
-                header: dataHeader?.title,
-                subheader: dataHeader?.description
-            })
+        })
+        await db.Category.create({
+            code: "CTCH",
+            value: "cho thuê căn hộ",
+            header: dataHeader?.title,
+            subheader: dataHeader?.description
         })
         
         resolve('Insert Done !')
