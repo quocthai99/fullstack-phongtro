@@ -1,12 +1,15 @@
 import React, { memo, useState } from 'react';
 import icons from '../ultils/icons';
+import { useNavigate, Link } from 'react-router-dom';
+import { formatVietnameseToString } from '../ultils/Common/formatVietnameseToString';
 
 const indexs = [0, 1, 2, 3];
 
 const { RiHeartFill, RiHeartLine, GrStar, BsBookmarkStarFill } = icons;
 
-const Item = ({ images, user, title, star, description, attributes, address }) => {
+const Item = ({ images, user, title, star, description, attributes, address, id }) => {
     const [isHoverHeart, setIsHoverHeart] = useState(false);
+    const navigate = useNavigate();
 
     const handleStar = (star) => {
         let stars = [];
@@ -16,7 +19,10 @@ const Item = ({ images, user, title, star, description, attributes, address }) =
 
     return (
         <div className="w-full flex border-t border-orange-600 py-4 ">
-            <div className="w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer ">
+            <Link
+                to={`chi-tiet/${formatVietnameseToString(title)}/${id}`}
+                className="w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer "
+            >
                 {images.length > 0 &&
                     images
                         .filter((i, index) => indexs.some((i) => i === index))
@@ -31,7 +37,7 @@ const Item = ({ images, user, title, star, description, attributes, address }) =
                 >
                     {!isHoverHeart ? <RiHeartLine size={24} /> : <RiHeartFill size={24} color="red" />}
                 </span>
-            </div>
+            </Link>
             <div className="w-3/5">
                 <div className="flex justify-between gap-4 w-full">
                     <div className="text-red-600 font-medium">
