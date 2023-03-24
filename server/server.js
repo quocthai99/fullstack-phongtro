@@ -3,9 +3,6 @@ require("dotenv").config();
 import cors from "cors";
 import initRoute from "./src/routes";
 import connectDatabase from "./src/config/connectDatabase";
-import { getNumberFromString, getNumberFromStringV2 } from "./src/ultils/common";
-
-console.log(getNumberFromStringV2('900.000 nghin'));
 
 const app = express();
 
