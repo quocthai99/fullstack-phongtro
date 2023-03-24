@@ -3,16 +3,10 @@ import { text } from '../../ultils/constant';
 import { ItemSidebar, Province, RelatedPost } from '../../components';
 import { List, Pagination } from './';
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from "../../store/actions"
 
 const HomePage = () => {
     const { categories, prices, areas } = useSelector(state => state.app)
-    const dispatch = useDispatch()
     
-    useEffect(() => {
-        dispatch(actions.getPrices())
-        dispatch(actions.getAreas())
-    }, [])
 
     return (
         <div className="w-full flex flex-col gap-3">

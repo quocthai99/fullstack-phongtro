@@ -19,7 +19,7 @@ const List = ({ categoryCode }) => {
         if (categoryCode) searchParamsObject.categoryCode = categoryCode
 
         dispatch(getPostsLimit(searchParamsObject))
-    }, [searchParams]);
+    }, [searchParams, categoryCode]);
 
     return (
         <div className="w-full p-2 bg-white shadow-md rounded-md">

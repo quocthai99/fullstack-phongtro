@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { text } from '../../ultils/constant';
 import { ItemSidebar, Province, RelatedPost } from '../../components';
-import { List, Pagination } from './';
+import { List, Pagination } from '.';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { formatVietnameseToString } from '../../ultils/Common/formatVietnameseToString';
 
-const RentalApartment = () => {
+const Rental = () => {
     const { prices, areas, categories } = useSelector((state) => state.app);
     const [categoryCode, setCategoryCode] = useState('');
+    const [categoryCurrent, setCategoryCurrent] = useState({});
     const location = useLocation();
 
     useEffect(() => {
-      const category = categories?.find(item => `/${formatVietnameseToString(item.value)}` === location.pathname)
-      if(category) setCategoryCode(category.code)
-      
-    }, [location])
-    console.log(categoryCode);
+        const category = categories?.find((item) => `/${formatVietnameseToString(item.value)}` === location.pathname);
+        setCategoryCurrent(category);
+        console.log(categoryCurrent);
+        if (category) setCategoryCode(category.code);
+    }, [location]);
 
     return (
         <div className="w-full flex flex-col gap-3">
             <div>
-                <h1 className="text-[28px] font-bold ">{text.HOME_TITLE}</h1>
-                <p className="text-sm text-gray-700 ">{text.HOME_DESCRIPTION}</p>
+                <h1 className="text-[28px] font-bold ">{categoryCurrent?.header}</h1>
+                <p className="text-sm text-gray-700 ">{categoryCurrent?.subheader}</p>
             </div>
             <Province />
             <div className="w-full flex gap-4">
@@ -40,4 +41,4 @@ const RentalApartment = () => {
     );
 };
 
-export default RentalApartment;
+export default Rental;
