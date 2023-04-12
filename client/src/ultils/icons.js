@@ -1,11 +1,11 @@
 import { AiOutlinePlusCircle } from 'react-icons/ai';
-import { GrNext, GrStar, GrLinkNext } from 'react-icons/gr';
+import { GrNext, GrStar, GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { TbReportMoney } from 'react-icons/tb';
 import { RiCrop2Line, RiHeartFill, RiHeartLine } from 'react-icons/ri';
 import { MdOutlineHouseSiding } from 'react-icons/md';
 import { FiSearch } from 'react-icons/fi';
-import { BsBookmarkStarFill } from 'react-icons/bs';
+import { BsBookmarkStarFill, BsChevronRight } from 'react-icons/bs';
 
 
 const icons = {
@@ -20,7 +20,9 @@ const icons = {
     RiHeartFill,
     RiHeartLine,
     BsBookmarkStarFill,
-    GrLinkNext
+    GrLinkNext,
+    GrLinkPrevious,
+    BsChevronRight
 };
 
 export default icons;

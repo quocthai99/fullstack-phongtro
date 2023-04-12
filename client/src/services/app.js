@@ -23,3 +23,15 @@ export const apiGetPrices = () => new Promise(async (resolve, reject) => {
             reject(error);
         }
     });
+
+    export const apiGetProvinces = () => new Promise(async (resolve, reject) => {
+        try {
+            const response = await axiosConfig({
+                method: 'get',
+                url: '/api/v1/province/all',
+            });
+            resolve(response);
+        } catch (error) {
+            reject(error);
+        }
+    });
