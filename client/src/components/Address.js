@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Select, InputReadOnly } from '../components';
-import { apiGetPublicProvinces, apiGetPublicDistrict } from '../services';
+import { apiGetPublicProvinces } from '../services';
 
 const Address = () => {
 
@@ -8,7 +8,6 @@ const Address = () => {
     const [districts, setDistricts] = useState([])
     const [province, setProvince] = useState('')
     const [district, setDistrict] = useState('')
-    const [reset, setReset] = useState(false)
 
     useEffect(() => {
 
@@ -22,30 +21,16 @@ const Address = () => {
         fetchPublicProvince()
     }, [])
 
-    useEffect(() => {
-        setDistrict(null)
-        const fetchPublicDistrict = async () => {
-            const response = await apiGetPublicDistrict(province)
-            if (response.status === 200) {
-                setDistricts(response.data?.results)
-            }
-        }
-        province && fetchPublicDistrict()
-        !province ? setReset(true) : setReset(false)
-        !province && setDistricts([])
-    }, [province])
-
     return (
         <div>
             <h2 className="font-semibold text-xl py-4">Địa chỉ cho thuê</h2>
             <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-4">
-                    <Select type='province' value={province ? province : ''} setValue={setProvince} options={provinces} label='Tỉnh/Thành phố' />
-                    <Select reset={reset} type='district' value={district ? district : ''} setValue={setDistrict} options={districts} label='Quận/Huyện' />
+                    <Select value options={provinces} label='Tỉnh/Thành phố' />
+                    <Select value options={provinces} label='Quận/Huyện' />
                 </div>
                 <InputReadOnly
                     label='Địa chỉ chính xác'
-                    value={`${district ? `${districts?.find(item => item.district_id === district)?.district_name},` : ''} ${province ? provinces?.find(item => item.province_id === province)?.province_name : ''}`}
                 />
             </div>
         </div>

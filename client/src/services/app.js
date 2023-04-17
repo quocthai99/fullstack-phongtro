@@ -11,6 +11,7 @@ export const apiGetPrices = () => new Promise(async (resolve, reject) => {
             reject(error);
         }
     });
+    
 
     export const apiGetAreas = () => new Promise(async (resolve, reject) => {
         try {
