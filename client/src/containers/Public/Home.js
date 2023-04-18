@@ -4,10 +4,11 @@ import { Outlet } from 'react-router-dom';
 import { Navigation, Search } from './';
 import { Intro, Contact } from '../../components';
 import * as actions from '../../store/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
     const dispatch = useDispatch();
+    const {isLoggedIn} = useSelector(state => state.auth)
 
     useEffect(() => {
         dispatch(actions.getPrices());
@@ -18,7 +19,7 @@ const Home = () => {
         <div className="w-full flex flex-col items-center h-full">
             <Header />
             <Navigation />
-            <Search />
+            {isLoggedIn && <Search />}
             <div className=" w-1100 flex flex-col items-center justify-start mt-3">
                 <Outlet />
             </div>
