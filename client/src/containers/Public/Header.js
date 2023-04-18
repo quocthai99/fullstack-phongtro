@@ -1,13 +1,14 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import logo from '../../assets/logo-phongtro.svg';
-import { Button } from '../../components';
+import { Button, User } from '../../components';
 import { path } from '../../ultils/constant';
 import * as actions from '../../store/actions';
+import menuManage from '../../ultils/menuManage'
 import icons from '../../ultils/icons';
 
-const { AiOutlinePlusCircle } = icons;
+const { AiOutlinePlusCircle, AiOutlineLogout, BsChevronDown  } = icons;
 
 const Header = () => {
     const navigate = useNavigate();
@@ -15,6 +16,7 @@ const Header = () => {
     const [searchParams] = useSearchParams()
     const headerRef = useRef()
     const { isLoggedIn } = useSelector((state) => state.auth);
+    const [isShowMenu, setIsShowMenu] = useState(false)
 
     const goLogin = useCallback((flag) => {
         navigate(path.LOGIN, { state: { flag } });
@@ -22,7 +24,6 @@ const Header = () => {
 
     useEffect(() => {
         headerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-
     }, [searchParams.get('page')])
 
     return (
@@ -31,7 +32,7 @@ const Header = () => {
                 <Link to={'/'}>
                     <img src={logo} alt="logo" className="w-[240px] h-[70px] object-contain" />
                 </Link>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-3">
                     {!isLoggedIn && (
                         <div className="flex items-center gap-1">
                             <small>Phongtro123.com xin chào !</small>
@@ -50,14 +51,37 @@ const Header = () => {
                         </div>
                     )}
                     {isLoggedIn && (
-                        <div className="flex items-center gap-1">
-                            <small>Ten !</small>
+                        <div className="flex items-center gap-1 relative">
+                            <User /> 
                             <Button
-                                text={'Đăng xuất'}
+                                text={'Quản lý tài khoản'}
                                 textColor="text-white"
-                                bgColor="bg-red-700"
-                                onClick={() => dispatch(actions.logout())}
+                                bgColor="bg-blue-700"
+                                px='px-4'
+                                IcAfter={BsChevronDown}
+                                onClick={() => setIsShowMenu(prev => !prev)}
                             />
+                            {isShowMenu && <div className='absolute min-w-200 top-full bg-white shadow-md rounded-md p-4 right-0 flex flex-col' >
+                                {menuManage.map(item => {
+                                    return (
+                                        <Link
+                                            className='hover:text-orange-500 flex items-center gap-2 text-blue-600 border-b border-gray-200 py-2'
+                                            key={item.id}
+                                            to={item?.path}
+                                        >
+                                            {item?.icon}
+                                            {item.text}
+                                        </Link>
+                                    )
+                                })}
+                                <span onClick={() => {
+                                    setIsShowMenu(false)
+                                    dispatch(actions.logout())
+                                }} className='cursor-pointer hover:text-orange-500 text-blue-500 py-2 flex items-center gap-2'>
+                                    <AiOutlineLogout />
+                                    Đăng xuất
+                                </span>
+                            </div>}
                         </div>
                     )}
                     <Button

@@ -13,3 +13,4 @@ export { default as RelatedPost } from './RelatedPost';
 export { default as Modal } from './Modal';
 export { default as Address } from './Address';
 export { default as Select } from './Select';
+export { default as User } from './User';

@@ -1,8 +1,21 @@
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { DetailPost, Home, HomePage, Login, Rental, SearchDetail } from './containers/Public';
+import {System, CreatePost} from './containers/System'
 import { path } from './ultils/constant';
+import * as actions from './store/actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
+    const dispatch = useDispatch();
+    const {isLoggedIn} = useSelector(state => state.auth)
+
+    useEffect(() => {
+        setTimeout(() => {
+            isLoggedIn && dispatch(actions.getCurrent())
+        }, 100)
+    }, [isLoggedIn])
+
     return (
         <div className="w-full h-full bg-primary">
             <Routes>
@@ -19,6 +32,9 @@ function App() {
                     <Route path={path.SEARCH} element={<SearchDetail />} />
                     <Route path={path.DETAIL_POST__TITLE__POSTID} element={<DetailPost />} />
                     <Route path={'chi-tiet/*'} element={<DetailPost />} />
+                </Route>
+                <Route path={path.SYSTEM} element={<System />} >
+                    <Route path={path.CREATE_POST} element={<CreatePost />} />
                 </Route>
             </Routes>
         </div>
