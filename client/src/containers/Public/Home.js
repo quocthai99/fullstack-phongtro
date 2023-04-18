@@ -5,10 +5,21 @@ import { Navigation, Search } from './';
 import { Intro, Contact } from '../../components';
 import * as actions from '../../store/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import { apiGetCurrent } from '../../services/user';
 
 const Home = () => {
     const dispatch = useDispatch();
     const {isLoggedIn} = useSelector(state => state.auth)
+
+    useEffect(() => {
+
+        const fetchCurrent = async() => {
+            const response = await apiGetCurrent()
+            console.log(response);
+        }
+
+        isLoggedIn && fetchCurrent()
+    }, [isLoggedIn])
 
     useEffect(() => {
         dispatch(actions.getPrices());
