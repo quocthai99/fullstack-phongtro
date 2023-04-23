@@ -6,10 +6,12 @@ import { RiCrop2Line, RiHeartFill, RiHeartLine } from 'react-icons/ri';
 import { MdOutlineHouseSiding, MdOutlineLibraryBooks } from 'react-icons/md';
 import { FiSearch } from 'react-icons/fi';
 import { BiUserPin } from 'react-icons/bi';
-import { ImPencil2 } from 'react-icons/im';
-import { BsBookmarkStarFill, BsChevronRight, BsChevronDown } from 'react-icons/bs';
+import { ImPencil2, ImBin } from 'react-icons/im';
+import { BsBookmarkStarFill, BsChevronRight, BsChevronDown, BsCameraFill } from 'react-icons/bs';
 
 const icons = {
+    BsCameraFill,
+    ImBin,
     ImPencil2,
     MdOutlineLibraryBooks,
     BiUserPin,
