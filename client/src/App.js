@@ -16,8 +16,14 @@ function App() {
         }, 100)
     }, [isLoggedIn])
 
+    useEffect(() => {
+        dispatch(actions.getPrices());
+        dispatch(actions.getAreas());
+        dispatch(actions.getProvinces());
+    }, []);
+
     return (
-        <div className="w-full h-full bg-primary">
+        <div className="w-full h-full overflow-hidden bg-primary">
             <Routes>
                 <Route path={path.HOME} element={<Home />}>
                     <Route path="*" element={<HomePage />} />

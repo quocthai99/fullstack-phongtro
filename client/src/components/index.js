@@ -17,3 +17,4 @@ export { default as User } from './User';
 export { default as Overview } from './Overview';
 export { default as InputReadOnly } from './InputReadOnly';
 export { default as InputFormV2 } from './InputFormV2';
+export { default as Loading } from './Loading';
