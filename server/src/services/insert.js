@@ -113,12 +113,8 @@ export const insert = () =>
             )?.content,
             bonus: item?.overview?.content.find((i) => i.name === "Gói tin:")
               ?.content,
-            created: item?.overview?.content.find(
-              (i) => i.name === "Ngày đăng:"
-            )?.content,
-            expired: item?.overview?.content.find(
-              (i) => i.name === "Ngày hết hạn:"
-            )?.content,
+            created: item?.overview?.content.find((i) => i.name === "Ngày đăng:")?.content,
+            expired: item?.overview?.content.find((i) => i.name === "Ngày hết hạn:")?.content,
           });
           await db.User.create({
             id: userId,

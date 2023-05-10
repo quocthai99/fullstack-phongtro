@@ -10,21 +10,26 @@ import validate from '../../ultils/validateFields';
 
 const { BsCameraFill, ImBin } = icons
 
-const CreatePost = () => {
+const CreatePost = ({ isEdit }) => {
+    const {dataEdit} = useSelector(state => state.post)
+    
     const [invalidFields, setInvalidFields] = useState([])
-    const [payload, setPayload] = useState({
-        categoryCode: '',
-        title: '',
-        priceNumber: 0,
-        areaNumber: 0,
-        images: '',
-        address: '',
-        priceCode: '',
-        areaCode: '',
-        description: '',
-        target: '',
-        province: ''
-    })
+    const [payload, setPayload] = useState(() => { 
+        const initData = {
+            categoryCode: dataEdit?.categoryCode || '',
+            title: dataEdit?.title || '',
+            priceNumber: dataEdit?.priceNumber * 1000000 || 0,
+            areaNumber: dataEdit?.areaNumber || 0,
+            images: '',
+            address: dataEdit?.address || '',
+            priceCode: dataEdit?.priceCode || '',
+            areaCode: dataEdit?.areaCode || '',
+            description: dataEdit?.description || '',
+            target: '',
+            province: dataEdit?.province || ''
+        }
+        return initData
+     })
     const [imagesPreview, setImagesPreview] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const { prices, areas, categories, provinces } = useSelector(state => state.app)
@@ -96,11 +101,11 @@ const CreatePost = () => {
     }
     return (
         <div className="px-6">
-            <h1 className="text-3xl font-medium py-4 border-b border-gray-200">Đăng tin mới</h1>
+            <h1 className="text-3xl font-medium py-4 border-b border-gray-200">{isEdit ? 'Chỉnh sữa tin đăng' : 'Đăng tin mới'}</h1>
             <div className="flex gap-4">
                 <div className="py-4 flex flex-col gap-8 flex-auto">
                     <Address invalidFields={invalidFields} setInvalidFields={setInvalidFields} setPayload={setPayload} />
-                    <Overview invalidFields={invalidFields} setInvalidFields={setInvalidFields} payload={payload.title} setPayload={setPayload} />
+                    <Overview invalidFields={invalidFields} setInvalidFields={setInvalidFields} payload={payload} setPayload={setPayload} />
                     <div className='w-full mb-6'>
                         <h2 className='font-semibold text-xl py-4'>Hình ảnh</h2>
                         <small>Cập nhật hình ảnh rõ ràng sẽ cho thuê nhanh hơn</small>
@@ -140,7 +145,7 @@ const CreatePost = () => {
                     </div>
                     <Button onClick={handleSubmit} text='Tạo mới' bgColor='bg-green-600' textColor='text-white' />
                 </div>
-                <div className="w-[30%] flex-none">maps</div>
+                {/* <div className="w-[30%] flex-none">maps</div> */}
             </div>
         </div>
     );

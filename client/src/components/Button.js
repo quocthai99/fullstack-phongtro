@@ -8,7 +8,7 @@ const Button = ({ text, textColor, bgColor, IcAfter, onClick, fullWidth, px }) =
             onClick={onClick}
         >
             <span> {text}</span>
-            <span>{IcAfter && <IcAfter />}</span>
+            {IcAfter && <span>{<IcAfter />}</span>}
         </button>
     );
 };

@@ -42,7 +42,7 @@ const Overview = ({payload, setPayload, invalidFields, setInvalidFields}) => {
                     invalidFields={invalidFields}
                     setInvalidFields={setInvalidFields}
                     label="Tiêu đề"
-                    value={payload}
+                    value={payload.title}
                     setValue={setPayload}
                     name="title"
                 />
