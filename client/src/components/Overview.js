@@ -10,18 +10,18 @@ const targets = [
 
 const Overview = ({payload, setPayload, invalidFields, setInvalidFields}) => {
     const { categories } = useSelector((state) => state.app);
-    const [category, setCategory] = useState('')
-    const [sex, setSex] = useState('')
+    // const [category, setCategory] = useState('')
+    // const [sex, setSex] = useState('')
     const { currentData } = useSelector(state => state.user)
 
-    useEffect(() => {
-        setPayload(prev => ({
-            ...prev,
-            categoryCode: category,
-            target: sex
-        }))
+    // useEffect(() => {
+    //     setPayload(prev => ({
+    //         ...prev,
+    //         categoryCode: category,
+    //         target: sex
+    //     }))
 
-    }, [sex, category])
+    // }, [sex, category])
 
     return (
         <div>
@@ -33,9 +33,9 @@ const Overview = ({payload, setPayload, invalidFields, setInvalidFields}) => {
                         setInvalidFields={setInvalidFields}
                         label="Loại chuyên mục"
                         options={categories}
-                        name="category"
-                        value={category}
-                        setValue={setCategory}
+                        name="categoryCode"
+                        value={payload.categoryCode}
+                        setValue={setPayload}
                     />
                 </div>
                 <InputFormV2
@@ -89,8 +89,8 @@ const Overview = ({payload, setPayload, invalidFields, setInvalidFields}) => {
                         setInvalidFields={setInvalidFields}
                         options={targets}
                         name='target'
-                        value={sex}
-                        setValue={setSex}
+                        value={payload.target}
+                        setValue={setPayload}
                         label='Đối tượng cho thuê'
                     />
                 </div>

@@ -13,7 +13,7 @@ const Select = ({ label, options, value, setValue, type, reset, name, invalidFie
             <label className='font-medium' htmlFor="select-address">{label}</label>
             <select
                 value={reset ? '' : value}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => !name ? setValue(e.target.value) : setValue(prev => ({ ...prev, [name]: e.target.value }))}
                 id="select-address"
                 className="outline-none border border-gray-300 p-2 rounded-md w-full"
                 onFocus={() => setInvalidFields([])}
