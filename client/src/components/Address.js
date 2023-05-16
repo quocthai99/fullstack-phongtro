@@ -10,7 +10,6 @@ const Address = ({setPayload, invalidFields, setInvalidFields}) => {
     const [province, setProvince] = useState('');
     const [district, setDistrict] = useState('');
     const [reset, setReset] = useState(false)
-    console.log(dataEdit);
 
     useEffect(() => {
         if (dataEdit) {

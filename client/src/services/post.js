@@ -1,5 +1,5 @@
 import axiosConfig from '../axiosConfig';
-import axios from 'axios'
+import axios from 'axios';
 
 export const apiGetPosts = () =>
     new Promise(async (resolve, reject) => {
@@ -41,27 +41,13 @@ export const apiGetNewPosts = () =>
         }
     });
 
-    export const apiUploadImages = (images) => new Promise(async (resolve, reject) => {
+export const apiUploadImages = (images) =>
+    new Promise(async (resolve, reject) => {
         try {
             const response = await axios({
                 method: 'post',
                 url: `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload/`,
                 data: images,
-            })
-            resolve(response)
-    
-        } catch (error) {
-            reject(error)
-        }
-    })
-
-    export const apiCreatePosts = (payload) =>
-    new Promise(async (resolve, reject) => {
-        try {
-            const response = await axiosConfig({
-                method: 'post',
-                url: '/api/v1/post/create-new',
-                data: payload
             });
             resolve(response);
         } catch (error) {
@@ -69,7 +55,21 @@ export const apiGetNewPosts = () =>
         }
     });
 
-    export const apiGetPostsLimitAdmin = (query) =>
+export const apiCreatePosts = (payload) =>
+    new Promise(async (resolve, reject) => {
+        try {
+            const response = await axiosConfig({
+                method: 'post',
+                url: '/api/v1/post/create-new',
+                data: payload,
+            });
+            resolve(response);
+        } catch (error) {
+            reject(error);
+        }
+    });
+
+export const apiGetPostsLimitAdmin = (query) =>
     new Promise(async (resolve, reject) => {
         try {
             const response = await axiosConfig({
@@ -83,13 +83,27 @@ export const apiGetNewPosts = () =>
         }
     });
 
-    export const apiUpdatePost = (payload) =>
+export const apiUpdatePost = (payload) =>
     new Promise(async (resolve, reject) => {
         try {
             const response = await axiosConfig({
                 method: 'put',
                 url: `/api/v1/post/update`,
-                data: payload
+                data: payload,
+            });
+            resolve(response);
+        } catch (error) {
+            reject(error);
+        }
+    });
+
+export const apiDeletePost = (postId) =>
+    new Promise(async (resolve, reject) => {
+        try {
+            const response = await axiosConfig({
+                method: 'delete',
+                url: `/api/v1/post/delete`,
+                params: { postId },
             });
             resolve(response);
         } catch (error) {
