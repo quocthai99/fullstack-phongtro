@@ -11,7 +11,7 @@ const InputFormV2 = ({label, unit, value, setValue, name, small, invalidFields, 
                     type="text"
                     id="title"
                     className={`flex-auto ${unit ? 'rounded-tl-md rounded-bl-md' : 'rounded-md'} outline-none flex-auto border border-gray-300 p-2`}
-                    onFocus={() => setInvalidFields([])}
+                    onFocus={() => setInvalidFields && setInvalidFields([])}
                 />
                 {unit && <span className='p-2 bg-gray-400 flex-none w-16 flex items-center justify-center rounded-tr-md rounded-br-md border border-gray-300' >{unit}</span>}
             </div>

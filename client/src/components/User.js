@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import anonAvatar from '../assets/anon-avatar.png'
+import { blobToBase64 } from '../ultils/Common/toBase64'
 
 const User = () => {
     const { currentData } = useSelector(state => state.user)
