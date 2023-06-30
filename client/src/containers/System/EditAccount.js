@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Button, InputFormV2, InputReadOnly } from '../../components';
 import anonAvatar from '../../assets/anon-avatar.png'
 import { useSelector, useDispatch } from 'react-redux';
-import { apiUploadImages, apiUpdateUser } from '../../services';
+import { apiUpdateUser } from '../../services';
 import { fileToBase64, blobToBase64 } from '../../ultils/Common/toBase64';
 import { getCurrent } from '../../store/actions';
 import Swal from 'sweetalert2';
@@ -13,7 +13,7 @@ const EditAccount = () => {
     const { currentData } = useSelector(state => state.user)
     const [payload, setPayload] = useState({
         name: currentData?.name || '',
-        avatar: currentData?.avatar || '',
+        avatar: blobToBase64(currentData?.avatar) || '',
         fbUrl: currentData?.fbUrl || '',
         zalo: currentData?.zalo || '',
     })

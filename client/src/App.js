@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { DetailPost, Home, HomePage, Login, Rental, SearchDetail } from './containers/Public';
+import { DetailPost, Home, HomePage, Login, Rental, SearchDetail, Contact } from './containers/Public';
 import {System, CreatePost, ManagePost, EditAccount} from './containers/System'
 import { path } from './ultils/constant';
 import * as actions from './store/actions';
@@ -38,6 +38,7 @@ function App() {
                     <Route path={path.SEARCH} element={<SearchDetail />} />
                     <Route path={path.DETAIL_POST__TITLE__POSTID} element={<DetailPost />} />
                     <Route path={'chi-tiet/*'} element={<DetailPost />} />
+                    <Route path={path.CONTACT} element={<Contact />} />
                 </Route>
                 <Route path={path.SYSTEM} element={<System />} >
                     <Route path={path.CREATE_POST} element={<CreatePost />} />

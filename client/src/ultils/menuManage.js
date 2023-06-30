@@ -20,6 +20,12 @@ const menuManage = [
         text: 'Thông tin tài khoản',
         path: '/he-thong/sua-thong-tin-ca-nhan',
         icon: <BiUserPin />
+    },
+    {
+        id: 4,
+        text: 'Liên hệ',
+        path: '/lien-he',
+        icon: <BiUserPin />
     }
 ]
 
