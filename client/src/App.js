@@ -37,7 +37,7 @@ function App() {
                     <Route path={path.NHA_CHO_THUE} element={<Rental />} />
                     <Route path={path.SEARCH} element={<SearchDetail />} />
                     <Route path={path.DETAIL_POST__TITLE__POSTID} element={<DetailPost />} />
-                    <Route path={'chi-tiet/*'} element={<DetailPost />} />
+                    <Route path={path.DETAIL_ALL} element={<DetailPost />} />
                     <Route path={path.CONTACT} element={<Contact />} />
                 </Route>
                 <Route path={path.SYSTEM} element={<System />} >

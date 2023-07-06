@@ -5,9 +5,10 @@ import { TbReportMoney } from 'react-icons/tb';
 import { RiCrop2Line, RiHeartFill, RiHeartLine } from 'react-icons/ri';
 import { MdOutlineHouseSiding, MdOutlineLibraryBooks } from 'react-icons/md';
 import { FiSearch } from 'react-icons/fi';
+import { HiLocationMarker } from 'react-icons/hi';
 import { BiUserPin } from 'react-icons/bi';
 import { ImPencil2, ImBin } from 'react-icons/im';
-import { BsBookmarkStarFill, BsChevronRight, BsChevronDown, BsCameraFill } from 'react-icons/bs';
+import { BsBookmarkStarFill, BsChevronRight, BsChevronDown, BsCameraFill, BsStopwatch } from 'react-icons/bs';
 
 const icons = {
     BsCameraFill,
@@ -31,6 +32,8 @@ const icons = {
     GrLinkNext,
     GrLinkPrevious,
     BsChevronRight,
+    HiLocationMarker,
+    BsStopwatch
 };
 
 export default icons;
