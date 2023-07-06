@@ -8,7 +8,8 @@ import { FiSearch } from 'react-icons/fi';
 import { HiLocationMarker } from 'react-icons/hi';
 import { BiUserPin } from 'react-icons/bi';
 import { ImPencil2, ImBin } from 'react-icons/im';
-import { BsBookmarkStarFill, BsChevronRight, BsChevronDown, BsCameraFill, BsStopwatch } from 'react-icons/bs';
+import { SiZalo } from 'react-icons/si';
+import { BsBookmarkStarFill, BsChevronRight, BsChevronDown, BsCameraFill, BsStopwatch, BsDot, BsTelephoneFill } from 'react-icons/bs';
 
 const icons = {
     BsCameraFill,
@@ -33,7 +34,10 @@ const icons = {
     GrLinkPrevious,
     BsChevronRight,
     HiLocationMarker,
-    BsStopwatch
+    BsStopwatch,
+    BsDot,
+    BsTelephoneFill,
+    SiZalo
 };
 
 export default icons;

@@ -20,3 +20,4 @@ export { default as InputFormV2 } from './InputFormV2';
 export { default as Loading } from './Loading';
 export { default as UpdatePost } from './UpdatePost';
 export { default as SimpleSlider } from './SimpleSlider';
+export { default as BoxInfo } from './BoxInfo';
